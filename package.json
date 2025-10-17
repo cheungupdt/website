@@ -1,0 +1,28 @@
+{
+  "name": "mywebsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "dev": "eleventy --serve --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-navigation": "^1.0.4",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "html-minifier": "^4.0.0",
+    "markdown-it": "^14.1.0",
+    "netlify-cli": "^23.9.1"
+  },
+  "dependencies": {
+    "luxon": "^3.7.2",
+    "markdown-it-anchor": "^9.2.0"
+  }
+}

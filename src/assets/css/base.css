@@ -1,4 +1,59 @@
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ description or site.description }}">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">{{ site.title }}</a>
+                <nav class="nav">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/blog/" class="nav-link">Blog</a>
+                    <a href="/projects/" class="nav-link">Projects</a>
+                    <a href="/contact/" class="nav-link">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main id="main" class="main">
+        <div class="container">
+            {{ content }}
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; {{ "now" | date("YYYY") }} {{ site.author }}. All rights reserved.</p>
+                <div class="footer-links">
+                    {% if social.linkedin %}
+                    <a href="{{ social.linkedin }}" class="footer-link">LinkedIn</a>
+                    {% endif %}
+                    {% if social.github %}
+                    <a href="{{ social.github }}" class="footer-link">GitHub</a>
+                    {% endif %}
+                    {% if social.twitter %}
+                    <a href="{{ social.twitter }}" class="footer-link">Twitter</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>'
+
+# Update index.njk
+New-Item -Path src\index.njk -ItemType File -Force
+Add-Content -Path src\index.njk -Value '---
 layout: layouts/base.njk
 title: Home
 description: "Professional robotics and automation expert with extensive experience in innovative solutions"

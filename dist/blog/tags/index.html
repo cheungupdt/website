@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tags - KC Steam</title>
+    <meta name="description" content="Browse all blog posts by tag">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="alternate" type="application/rss+xml" title="KC Steam - RSS Feed" href="/feed.xml">
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">KC Steam</a>
+                <nav class="nav">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/blog/" class="nav-link">Blog</a>
+                    <a href="/projects/" class="nav-link">Projects</a>
+                    <a href="/contact/" class="nav-link">Contact</a>
+                    <a href="/rss/" class="nav-link rss-link" title="RSS Feed">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 11a9 9 0 0 1 9 9v1.5a1.5 1.5 0 0 1-3 0V20a7 7 0 0 0-7-7v-1.5a1.5 1.5 0 0 1 3 0V11Z" fill="currentColor"/>
+                            <path d="M4 4.5A1.5 1.5 0 0 1 5.5 3v1.5a10.5 10.5 0 0 1 10.5 10.5v1.5a1.5 1.5 0 0 1-3 0V15A7.5 7.5 0 0 0 5.5 7.5V6A1.5 1.5 0 0 1 4 4.5Z" fill="currentColor"/>
+                            <circle cx="6" cy="18" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main id="main" class="main">
+        <div class="container">
+            <section class="tags-header">
+    <h1>Tags</h1>
+    <p class="lead">Browse all blog posts by tag</p>
+</section>
+<section class="tags-cloud">
+</section>
+<style>
+.tags-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+}
+
+.tags-header h1 {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tag-cloud-item {
+    background-color: var(--color-white);
+    color: var(--color-accent);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.tag-cloud-item:hover {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+}
+
+.tag-count {
+    background-color: var(--color-secondary-light);
+    color: var(--color-secondary-dark);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+}
+
+.tag-cloud-item:hover .tag-count {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+}
+</style>
+
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; undefined NaN, NaN KC Steam. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="/rss/" class="footer-link">RSS Feed</a>
+                    
+                    <a href="#" class="footer-link">LinkedIn</a>
+                    
+                    
+                    <a href="#" class="footer-link">GitHub</a>
+                    
+                    
+                    <a href="#" class="footer-link">Twitter</a>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<div class="project-card{% if class %} {{ class }}{% endif %}">
+  {% if project.data.image %}
+  <div class="project-card-image">
+    <img src="{{ project.data.image }}" alt="{{ project.data.title }}" loading="lazy">
+  </div>
+  {% else %}
+  <div class="project-card-image">
+    <img src="https://placehold.co/600x400/3366ff/ffffff?text={{ project.data.title | replace(' ', '+') }}" alt="{{ project.data.title }}" loading="lazy">
+  </div>
+  {% endif %}
+  <div class="project-card-content">
+    <h3 class="project-card-title">{{ project.data.title }}</h3>
+    {% if project.data.date %}
+    <p class="project-card-date">{{ project.data.date | readableDate }}</p>
+    {% endif %}
+    <p class="project-card-description">{{ project.data.description }}</p>
+    {% if project.data.tags %}
+    <div class="project-card-tags">
+      {% for tag in project.data.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <a href="{{ project.url }}" class="project-card-link">View Project</a>
+  </div>
+</div>

@@ -1,7 +1,14 @@
 {
-  "title": "KC Steam",
-  "url": "http://localhost:8080",
-  "description": "Professional robotics and automation expert",
-  "author": "KC Steam",
-  "email": "contact@kcsteam.org"
+  "title": "KCS Team",
+  "description": "Professional multi-subdomain for KCS Team",
+  "author": "KCS Team", 
+  "url": "http://localhost:8000",
+  "email": "contact@kcsteam.org",
+  "diagrams": {
+    "theme": "dark",
+    "defaultChartType": "bar",
+    "animationDuration": 1000,
+    "responsive": true
+    
+  }
 }

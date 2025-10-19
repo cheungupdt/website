@@ -1,0 +1,22 @@
+<div class="achievement-card{% if class %} {{ class }}{% endif %}">
+  <div class="achievement-card-icon">
+    {% if achievement.data.icon %}
+    <img src="{{ achievement.data.icon }}" alt="{{ achievement.data.title }}" loading="lazy">
+    {% else %}
+    <img src="https://placehold.co/100x100/3366ff/ffffff?text=Icon" alt="{{ achievement.data.title }}" loading="lazy">
+    {% endif %}
+  </div>
+  <div class="achievement-card-content">
+    <h3 class="achievement-card-title">{{ achievement.data.title }}</h3>
+    {% if achievement.data.date %}
+    <p class="achievement-card-date">{{ achievement.data.date | readableDate }}</p>
+    {% endif %}
+    {% if achievement.data.organization %}
+    <p class="achievement-card-organization">{{ achievement.data.organization }}</p>
+    {% endif %}
+    <p class="achievement-card-description">{{ achievement.data.description }}</p>
+    {% if achievement.data.url %}
+    <a href="{{ achievement.data.url }}" class="achievement-card-link" target="_blank" rel="noopener">View Certificate</a>
+    {% endif %}
+  </div>
+</div>

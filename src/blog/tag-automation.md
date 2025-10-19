@@ -1,23 +1,27 @@
 ---
 layout: layouts/base.njk
-title: "Tag: automation"
-permalink: /blog/tag-pages/automation/
+title: "Automation"
+description: "Posts about automation"
+pagination:
+  data: collections.posts
+  size: 10
+  alias: posts
+  filter:
+    - "automation"
 ---
 
 <section class="tag-header">
-    <h1>Tag: #automation</h1>
-    <p class="lead">
-        {% set tagPosts = collections.posts | where("data.tags", "automation") %}
-        {{ tagPosts.length }} 
-        post{% if tagPosts.length != 1 %}s{% endif %}
-        with this tag
-    </p>
+    <h1>Posts tagged with "Automation"</h1>
+    <p class="lead">Showing all posts tagged with "automation"</p>
+    <div class="blog-actions">
+        <a href="/blog/tags/" class="btn btn-outline">← Back to All Tags</a>
+        <a href="/blog/" class="btn btn-outline">← Back to Blog</a>
+    </div>
 </section>
 
 <section class="blog-posts">
-    {% set tagPosts = collections.posts | where("data.tags", "automation") %}
-    {% if tagPosts.length > 0 %}
-        {% for post in tagPosts %}
+    {% if posts and posts.length > 0 %}
+        {% for post in posts %}
         <article class="blog-post-preview">
             <header>
                 <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
@@ -38,20 +42,18 @@ permalink: /blog/tag-pages/automation/
             {% endif %}
             
             <footer>
-                <a href="{{ post.url }}" class="btn btn-outline">Read More</a>
+                <a href="{{ post.url }}" class="blog-post-preview">
+                    Read More
+                </a>
             </footer>
         </article>
         {% endfor %}
     {% else %}
     <div class="no-posts">
-        <p>No posts found with this tag.</p>
+        <p>No posts found with tag "automation".</p>
     </div>
     {% endif %}
 </section>
-
-<nav class="tag-navigation">
-    <a href="/blog/tags/" class="btn btn-outline">? All Tags</a>
-</nav>
 
 <style>
 .tag-header {
@@ -62,7 +64,13 @@ permalink: /blog/tag-pages/automation/
 .tag-header h1 {
     font-size: var(--font-size-4xl);
     margin-bottom: var(--spacing-lg);
-    color: var(--color-accent);
+}
+
+.blog-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
 }
 
 .blog-posts {
@@ -90,7 +98,7 @@ permalink: /blog/tag-pages/automation/
 }
 
 .blog-post-preview h2 a {
-    color: permalink: var(--color-primary);
+    color: var(--color-primary);
     text-decoration: none;
 }
 
@@ -140,16 +148,23 @@ permalink: /blog/tag-pages/automation/
     color: var(--color-secondary);
 }
 
-.tag-navigation {
-    text-align: center;
-    margin-top: var(--spacing-3xl);
+.btn {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition-fast);
 }
 
-@media (max-width: 768px) {
-    .blog-meta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-sm);
-    }
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-accent);
+    color: var(--color-white);
 }
 </style>

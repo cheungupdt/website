@@ -6,6 +6,8 @@
     <title>{% if title %}{{ title }} - {% endif %}{{ site.title }}</title>
     <meta name="description" content="{{ description or site.description }}">
     <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/diagram.css">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - RSS Feed" href="/feed.xml">
 </head>
 <body>
@@ -19,6 +21,9 @@
                     <a href="/" class="nav-link">Home</a>
                     <a href="/blog/" class="nav-link">Blog</a>
                     <a href="/projects/" class="nav-link">Projects</a>
+                    <a href="/achievements/" class="nav-link">Achievements</a>
+                    <a href="/speaking/" class="nav-link">Speaking</a>
+                    <a href="/diagrams/" class="nav-link">Diagrams</a>
                     <a href="/contact/" class="nav-link">Contact</a>
                     <a href="/rss/" class="nav-link rss-link" title="RSS Feed">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,5 +62,11 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/assets/js/diagrams.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="/assets/js/lightbox.js"></script>
 </body>
 </html>

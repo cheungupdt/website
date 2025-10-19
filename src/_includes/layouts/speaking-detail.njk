@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ description or site.description }}">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/components.css">
+    <link rel="stylesheet" href="/assets/css/diagram.css">
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">{{ site.title }}</a>
+                <nav class="nav">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/blog/" class="nav-link">Blog</a>
+                    <a href="/projects/" class="nav-link">Projects</a>
+                    <a href="/achievements/" class="nav-link">Achievements</a>
+                    <a href="/speaking/" class="nav-link active">Speaking</a>
+                    <a href="/diagrams/" class="nav-link">Diagrams</a>
+                    <a href="/contact/" class="nav-link">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main id="main" class="main">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="/speaking/">Speaking Engagements</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">{{ title }}</span>
+            </nav>
+            
+            <article class="speaking-detail">
+                <header class="speaking-header">
+                    <h1>{{ title }}</h1>
+                    {% if date %}
+                    <p class="speaking-date">{{ date | readableDate }}</p>
+                    {% endif %}
+                    {% if event %}
+                    <p class="speaking-event">{{ event }}</p>
+                    {% endif %}
+                    {% if location %}
+                    <p class="speaking-location">{{ location }}</p>
+                    {% endif %}
+                </header>
+                
+                {% if image %}
+                <div class="speaking-hero-image">
+                    <img src="{{ image }}" alt="{{ title }}">
+                </div>
+                {% endif %}
+                
+                <div class="speaking-content">
+                    {{ content | safe }}
+                </div>
+                
+                <footer class="speaking-footer">
+                    <a href="/speaking/" class="back-to-speaking">← Back to Speaking Engagements</a>
+                </footer>
+            </article>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; {{ "now" | date("YYYY") }} {{ site.author }}. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="/rss/" class="footer-link">RSS Feed</a>
+                    {% if social.linkedin %}
+                    <a href="{{ social.linkedin }}" class="footer-link">LinkedIn</a>
+                    {% endif %}
+                    {% if social.github %}
+                    <a href="{{ social.github }}" class="footer-link">GitHub</a>
+                    {% endif %}
+                    {% if social.twitter %}
+                    <a href="{{ social.twitter }}" class="footer-link">Twitter</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/assets/js/diagrams.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="/assets/js/lightbox.js"></script>
+</body>
+</html>

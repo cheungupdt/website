@@ -1,0 +1,11 @@
+<div class="diagram-container chart-container{% if class %} {{ class }}{% endif %}">
+  {% if title %}
+  <h3 class="diagram-title">{{ title }}</h3>
+  {% endif %}
+  {% if description %}
+  <p class="diagram-description">{{ description }}</p>
+  {% endif %}
+  <div class="chart-wrapper">
+    <canvas id="chart-{{ id | default('chart') }}" width="400" height="200"></canvas>
+  </div>
+</div>

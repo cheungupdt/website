@@ -12,6 +12,21 @@ module.exports = function(eleventyConfig) {
     return collection.getFilteredByGlob("src/_subsites/blog/posts/**/*.md");
   });
   
+  // Add collection for projects
+  eleventyConfig.addCollection("projects", function(collection) {
+    return collection.getFilteredByGlob("src/projects/**/*.md");
+  });
+  
+  // Add collection for achievements
+  eleventyConfig.addCollection("achievements", function(collection) {
+    return collection.getFilteredByGlob("src/achievements/**/*.md");
+  });
+  
+  // Add collection for speaking engagements
+  eleventyConfig.addCollection("speaking", function(collection) {
+    return collection.getFilteredByGlob("src/speaking/**/*.md");
+  });
+  
   // Add tag collection
   eleventyConfig.addCollection("tagList", function(collection) {
     const tagSet = new Set();
@@ -25,6 +40,37 @@ module.exports = function(eleventyConfig) {
       }
     });
     return [...tagSet].sort();
+  });
+  
+  // Add tagPages collection
+  eleventyConfig.addCollection("tagPages", function(collection) {
+    const tagPages = [];
+    const tagList = [];
+    
+    // Get all unique tags
+    collection.getAll().forEach(item => {
+      if ("tags" in item.data) {
+        let tags = item.data.tags;
+        if (typeof tags === "string") {
+          tags = [tags];
+        }
+        tags.forEach(tag => tagList.push(tag));
+      }
+    });
+    
+    // Create unique tag list
+    const uniqueTags = [...new Set(tagList)].sort();
+    
+    // Create tag pages with posts
+    uniqueTags.forEach(tag => {
+      const posts = collection.getFilteredByTag(tag);
+      tagPages.push({
+        tag: tag,
+        posts: posts
+      });
+    });
+    
+    return tagPages;
   });
   
   // Add date filter (with fixed syntax)
@@ -68,6 +114,42 @@ module.exports = function(eleventyConfig) {
       return new Date();
     }
     return new Date(Math.max(...collection.map(item => new Date(item.date))));
+  });
+  
+  // Add diagram data filter
+  eleventyConfig.addFilter("diagramData", function(data, type) {
+    if (type === "mermaid") {
+      return data;
+    } else if (type === "chart") {
+      return JSON.stringify(data);
+    }
+    return data;
+  });
+  
+  // Add shortcodes for charts and robotics diagrams
+  eleventyConfig.addPairedShortcode("chartContainer", function(content, id, title, description) {
+    return `
+<div class="diagram-container chart-container">
+  <h3 class="diagram-title">${title}</h3>
+  <p class="diagram-description">${description}</p>
+  <div class="chart-wrapper">
+    <canvas id="chart-${id}" width="400" height="200"></canvas>
+  </div>
+  <script>
+ ${content}
+  </script>
+</div>`;
+  });
+  
+  eleventyConfig.addPairedShortcode("roboticsDiagram", function(content, id, title, description) {
+    return `
+<div class="diagram-container robotics-diagram">
+  <h3 class="diagram-title">${title}</h3>
+  <p class="diagram-description">${description}</p>
+  <div class="robotics-diagram-content" id="robotics-${id}">
+ ${content}
+  </div>
+</div>`;
   });
   
   // Configure Nunjucks

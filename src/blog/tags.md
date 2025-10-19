@@ -2,6 +2,7 @@
 layout: layouts/base.njk
 title: Tags
 description: "Browse all blog posts by tag"
+permalink: /blog/tags/
 ---
 
 <section class="tags-header">
@@ -10,10 +11,10 @@ description: "Browse all blog posts by tag"
 </section>
 
 <section class="tags-cloud">
-    {% for tagPage in collections.tagPages %}
-    <a href="/blog/tag-pages/{{ tagPage.tag }}/" class="tag-cloud-item">
-        #{{ tagPage.tag }}
-        <span class="tag-count">{{ tagPage.posts.length }}</span>
+    {% for tag in collections.tagList %}
+    <a href="/blog/tags/{{ tag }}/" class="tag-cloud-item">
+        #{{ tag }}
+        <span class="tag-count">{{ collections[tag] | length }}</span>
     </a>
     {% endfor %}
 </section>

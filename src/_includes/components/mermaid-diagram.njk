@@ -1,0 +1,11 @@
+<div class="diagram-container mermaid-diagram{% if class %} {{ class }}{% endif %}">
+  {% if title %}
+  <h3 class="diagram-title">{{ title }}</h3>
+  {% endif %}
+  {% if description %}
+  <p class="diagram-description">{{ description }}</p>
+  {% endif %}
+  <div class="mermaid" id="mermaid-{{ id | default('diagram') }}">
+    {{ content | safe }}
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<!-- src/_includes/components/3d-model.njk -->
+<div class="model-container" data-model="{{ element.model }}">
+  <div class="model-viewer">
+    <div class="model-loading">
+      <div class="loading-spinner"></div>
+      <p>Loading 3D model...</p>
+    </div>
+    <canvas id="model-canvas-{{ element.model | replace('.glb', '') }}"></canvas>
+  </div>
+  <div class="model-controls">
+    <button class="btn btn-small" id="rotate-{{ element.model | replace('.glb', '') }}">Toggle Rotation</button>
+    <button class="btn btn-small" id="reset-{{ element.model | replace('.glb', '') }}">Reset View</button>
+  </div>
+</div>

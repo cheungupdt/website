@@ -1,0 +1,33 @@
+
+{
+  "title": "Technical Showcase",
+  "description": "Explore interactive technical demonstrations and visualizations",
+  "elements": [
+    {
+      "title": "3D Robotic Arm Model",
+      "description": "Interactive 3D model of a robotic arm with articulated joints",
+      "type": "3d-model",
+      "model": "robotic-arm.glb",
+      "tags": ["3d", "robotics", "interactive"]
+    },
+    {
+      "title": "Parallax Scrolling Effects",
+      "description": "Smooth parallax scrolling with layered elements",
+      "type": "parallax",
+      "image": "parallax-demo.jpg",
+      "tags": ["animation", "scrolling", "visual"]
+    },
+    {
+      "title": "Micro-interactions",
+      "description": "Subtle animations and transitions for enhanced user experience",
+      "type": "micro-interactions",
+      "tags": ["animation", "ux", "interaction"]
+    },
+    {
+      "title": "Performance Optimization",
+      "description": "Techniques for optimizing web performance and loading times",
+      "type": "performance",
+      "tags": ["performance", "optimization", "technical"]
+    }
+  ]
+}

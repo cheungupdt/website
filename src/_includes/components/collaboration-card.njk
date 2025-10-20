@@ -1,0 +1,12 @@
+<div class="collaboration-card">
+  <div class="card-icon">
+    <i class="icon-{{ opportunity.icon }}"></i>
+  </div>
+  <h3>{{ opportunity.title }}</h3>
+  <p>{{ opportunity.description }}</p>
+  <div class="card-tags">
+    {% for tag in opportunity.tags %}
+      <span class="tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+</div>

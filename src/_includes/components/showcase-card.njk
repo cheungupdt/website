@@ -1,0 +1,66 @@
+<div class="showcase-card" data-type="{{ element.type }}">
+  <div class="card-media">
+    {% if element.type == "3d-model" %}
+      <div class="model-container">
+        <div class="model-viewer">
+          <div class="model-loading">
+            <div class="loading-spinner"></div>
+            <p>Loading 3D model...</p>
+          </div>
+          <canvas id="model-canvas-{{ element.model | replace('.glb', '') }}"></canvas>
+        </div>
+        <div class="model-controls">
+          <button class="btn btn-small" id="rotate-{{ element.model | replace('.glb', '') }}">Toggle Rotation</button>
+          <button class="btn btn-small" id="reset-{{ element.model | replace('.glb', '') }}">Reset View</button>
+        </div>
+      </div>
+    {% elif element.type == "parallax" %}
+      <div class="parallax-demo">
+        <div class="parallax-layers">
+          <div class="parallax-layer" data-speed="0.2">Background</div>
+          <div class="parallax-layer" data-speed="0.5">Middle</div>
+          <div class="parallax-layer" data-speed="0.8">Foreground</div>
+        </div>
+      </div>
+    {% elif element.type == "micro-interactions" %}
+      <div class="animation-demo">
+        <div class="demo-container">
+          <div class="demo-element" id="demo-element-{{ element.title | slugify }}">
+            <div class="demo-box"></div>
+            <div class="demo-controls">
+              <button class="btn btn-small" data-animation="bounce">Bounce</button>
+              <button class="btn btn-small" data-animation="pulse">Pulse</button>
+              <button class="btn btn-small" data-animation="shake">Shake</button>
+              <button class="btn btn-small" data-animation="flip">Flip</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% elif element.type == "performance" %}
+      <div class="performance-demo">
+        <div class="performance-metrics">
+          <div class="metric">
+            <span class="metric-label">Load Time</span>
+            <span class="metric-value">1.2s</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Page Size</span>
+            <span class="metric-value">245KB</span>
+          </div>
+          <div class="metric-action">
+            <button class="btn btn-small" id="run-performance-test">Run Test</button>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <div class="card-content">
+    <h3>{{ element.title }}</h3>
+    <p>{{ element.description }}</p>
+    <div class="card-tags">
+      {% for tag in element.tags %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</div>

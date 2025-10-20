@@ -43,6 +43,18 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("innovation", function(collection) {
     return collection.getFilteredByGlob("src/innovation/**/*.md");
   });
+
+  // Add collection for contact pages
+  eleventyConfig.addCollection("contact", function(collection) {
+    return collection.getFilteredByGlob("src/contact/**/*.md");
+  });
+
+  // Add collection for showcase pages
+  eleventyConfig.addCollection("showcase", function(collection) {
+    return collection.getFilteredByGlob("src/showcase/**/*.md");
+  });
+
+
   
   // Add tag collection
   eleventyConfig.addCollection("tagList", function(collection) {
@@ -168,7 +180,7 @@ module.exports = function(eleventyConfig) {
   </div>
 </div>`;
   });
-  
+ 
   // Configure Nunjucks
   eleventyConfig.setNunjucksEnvironmentOptions({
     autoescape: false

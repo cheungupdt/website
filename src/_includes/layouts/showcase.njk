@@ -1,0 +1,29 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+  <link rel="stylesheet" href="/assets/css/showcase.css">
+{% endblock %}
+
+{% block content %}
+  <main class="showcase-page">
+    <div class="container">
+      <header class="page-header">
+        <h1>{{ title }}</h1>
+        <p>{{ description }}</p>
+      </header>
+      
+      <div class="showcase-content">
+        <div class="showcase-grid">
+          {% for element in showcase.elements %}
+            {% include "components/showcase-card.njk" %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block scripts %}
+  <script src="/assets/js/showcase.js"></script>
+  <script src="/assets/js/parallax.js"></script>
+{% endblock %}

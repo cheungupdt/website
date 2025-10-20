@@ -1,0 +1,63 @@
+{
+  "title": "Contact & Collaboration",
+  "description": "Get in touch with KC Steam for collaboration opportunities",
+  "email": "contact@kcsteam.org",
+  "phone": "+1 (555) 123-4567",
+  "social": {
+    "linkedin": "https://linkedin.com/in/kcsteam",
+    "github": "https://github.com/kcsteam",
+    "twitter": "https://twitter.com/kcsteam"
+  },
+  "collaborationOpportunities": [
+    {
+      "title": "Robotics Consulting",
+      "description": "Expert consultation on robotics system design and implementation",
+      "icon": "robotics",
+      "tags": ["robotics", "consulting", "technical"]
+    },
+    {
+      "title": "Automation Workflows",
+      "description": "Collaborate on building custom automation workflows with n8n",
+      "icon": "automation",
+      "tags": ["automation", "n8n", "workflows"]
+    },
+    {
+      "title": "Speaking Engagements",
+      "description": "Invite for conferences, workshops, and technical talks",
+      "icon": "speaking",
+      "tags": ["speaking", "workshops", "conferences"]
+    },
+    {
+      "title": "Technical Writing",
+      "description": "Collaborate on technical documentation and content creation",
+      "icon": "writing",
+      "tags": ["writing", "documentation", "content"]
+    }
+  ],
+  "formFields": [
+    {
+      "name": "name",
+      "label": "Full Name",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "email",
+      "label": "Email Address",
+      "type": "email",
+      "required": true
+    },
+    {
+      "name": "subject",
+      "label": "Subject",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "message",
+      "label": "Message",
+      "type": "textarea",
+      "required": true
+    }
+  ]
+}

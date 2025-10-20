@@ -1,0 +1,123 @@
+---
+
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<main class="expertise-detail innovation-detail">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/">Home</a>
+      <span class="separator">/</span>
+      <a href="/innovation/">Innovation</a>
+      <span class="separator">/</span>
+      <span class="current">{{ title }}</span>
+    </nav>
+    
+    <article class="expertise-article">
+      <header class="article-header">
+        <h1 class="article-title">{{ title }}</h1>
+        <div class="article-meta">
+          <span class="category">Innovation Portfolio</span>
+          <span class="reading-time">7 min read</span>
+        </div>
+      </header>
+      
+      <div class="article-content">
+        {{ content | safe }}
+      </div>
+      
+      <footer class="article-footer">
+        <div class="related-topics">
+          <h3>Related Innovation Topics</h3>
+          <div class="topic-grid">
+            {% set related = collections.innovation | where("data.tags", tags[0]) | limit(3) %}
+            {% for item in related %}
+              {% if item.url != page.url %}
+              <a href="{{ item.url }}" class="topic-card">
+                <h4>{{ item.data.title }}</h4>
+                <p>{{ item.data.description | truncate(100) }}</p>
+              </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        
+        <div class="navigation-links">
+          {% set prev = collections.innovation | getPreviousCollectionItem %}
+          {% set next = collections.innovation | getNextCollectionItem %}
+          
+          {% if prev %}
+          <a href="{{ prev.url }}" class="nav-link prev">
+            <span class="nav-label">Previous</span>
+            <span class="nav-title">{{ prev.data.title }}</span>
+          </a>
+          {% endif %}
+          
+          {% if next %}
+          <a href="{{ next.url }}" class="nav-link next">
+            <span class="nav-label">Next</span>
+            <span class="nav-title">{{ next.data.title }}</span>
+          </a>
+          {% endif %}
+        </div>
+      </footer>
+    </article>
+    
+    <aside class="expertise-sidebar">
+      <div class="sidebar-section">
+        <h3>Innovation Areas</h3>
+        <nav class="sidebar-nav">
+          {% for item in collections.innovation %}
+            {% if item.data.title != "Innovation Portfolio" %}
+            <a href="{{ item.url }}" class="nav-item {% if item.url == page.url %}active{% endif %}">
+              {{ item.data.title }}
+            </a>
+            {% endif %}
+          {% endfor %}
+        </nav>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3>Innovation Impact</h3>
+        <div class="impact-stats">
+          <div class="impact-item">
+            <span class="impact-number">12+</span>
+            <span class="impact-label">Patents Filed</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-number">25+</span>
+            <span class="impact-label">Products Launched</span>
+          </div>
+          <div class="impact-item">
+            <span class="impact-number">$50M+</span>
+            <span class="impact-label">Revenue Generated</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3>Innovation Frameworks</h3>
+        <div class="framework-list">
+          <div class="framework-item">
+            <strong>Design Thinking</strong>
+            <p>Human-centered approach</p>
+          </div>
+          <div class="framework-item">
+            <strong>Lean Startup</strong>
+            <p>Rapid validation</p>
+          </div>
+          <div class="framework-item">
+            <strong>TRIZ</strong>
+            <p>Systematic innovation</p>
+          </div>
+          <div class="framework-item">
+            <strong>Blue Ocean</strong>
+            <p>Market creation</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,108 @@
+---
+
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<main class="expertise-detail robotics-detail">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/">Home</a>
+      <span class="separator">/</span>
+      <a href="/robotics/">Robotics</a>
+      <span class="separator">/</span>
+      <span class="current">{{ title }}</span>
+    </nav>
+    
+    <article class="expertise-article">
+      <header class="article-header">
+        <h1 class="article-title">{{ title }}</h1>
+        <div class="article-meta">
+          <span class="category">Robotics Expertise</span>
+          <span class="reading-time">5 min read</span>
+        </div>
+      </header>
+      
+      <div class="article-content">
+        {{ content | safe }}
+      </div>
+      
+      <footer class="article-footer">
+        <div class="related-topics">
+          <h3>Related Topics</h3>
+          <div class="topic-grid">
+            {% set related = collections.robotics | where("data.tags", tags[0]) | limit(3) %}
+            {% for item in related %}
+              {% if item.url != page.url %}
+              <a href="{{ item.url }}" class="topic-card">
+                <h4>{{ item.data.title }}</h4>
+                <p>{{ item.data.description | truncate(100) }}</p>
+              </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        
+        <div class="navigation-links">
+          {% set prev = collections.robotics | getPreviousCollectionItem %}
+          {% set next = collections.robotics | getNextCollectionItem %}
+          
+          {% if prev %}
+          <a href="{{ prev.url }}" class="nav-link prev">
+            <span class="nav-label">Previous</span>
+            <span class="nav-title">{{ prev.data.title }}</span>
+          </a>
+          {% endif %}
+          
+          {% if next %}
+          <a href="{{ next.url }}" class="nav-link next">
+            <span class="nav-label">Next</span>
+            <span class="nav-title">{{ next.data.title }}</span>
+          </a>
+          {% endif %}
+        </div>
+      </footer>
+    </article>
+    
+    <aside class="expertise-sidebar">
+      <div class="sidebar-section">
+        <h3>Robotics Areas</h3>
+        <nav class="sidebar-nav">
+          {% for item in collections.robotics %}
+            {% if item.data.title != "Robotics Expertise" %}
+            <a href="{{ item.url }}" class="nav-item {% if item.url == page.url %}active{% endif %}">
+              {{ item.data.title }}
+            </a>
+            {% endif %}
+          {% endfor %}
+        </nav>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3>Key Technologies</h3>
+        <ul class="tech-list">
+          <li>PLC Programming</li>
+          <li>ROS Development</li>
+          <li>Computer Vision</li>
+          <li>Motion Control</li>
+          <li>Sensor Integration</li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3>Certifications</h3>
+        <div class="cert-list">
+          <div class="cert-item">
+            <strong>AI Agent Certification</strong>
+            <p>Advanced AI and ML for robotics</p>
+          </div>
+          <div class="cert-item">
+            <strong>Professional Engineer (NCESS)</strong>
+            <p>National engineering certification</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+{% endblock %}

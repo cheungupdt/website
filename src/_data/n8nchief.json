@@ -1,0 +1,18 @@
+{
+  "title": "n8n Workflow Expertise",
+  "description": "Enterprise workflow automation with n8n",
+  "workflows": [
+    {
+      "name": "Multi-Platform Data Sync",
+      "complexity": "Advanced",
+      "nodes": 25,
+      "integrations": 8
+    }
+  ],
+  "customNodes": [
+    {
+      "name": "Advanced Data Transformer",
+      "description": "Custom data transformation logic"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Robotics Expertise",
+  "description": "Advanced robotics and automation solutions",
+  "skills": [
+    {
+      "name": "PLC Programming",
+      "level": 95,
+      "category": "Industrial Automation"
+    },
+    {
+      "name": "ROS Development",
+      "level": 85,
+      "category": "Robotics OS"
+    },
+    {
+      "name": "Computer Vision",
+      "level": 80,
+      "category": "Perception"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Certified Robotics Professional",
+      "issuer": "Robotics Industry Association",
+      "date": "2023"
+    }
+  ]
+}

@@ -27,6 +27,23 @@ module.exports = function(eleventyConfig) {
     return collection.getFilteredByGlob("src/speaking/**/*.md");
   });
   
+  // Add collections for expertise sections
+  eleventyConfig.addCollection("robotics", function(collection) {
+    return collection.getFilteredByGlob("src/robotics/**/*.md");
+  });
+  
+  eleventyConfig.addCollection("n8nchief", function(collection) {
+    return collection.getFilteredByGlob("src/n8nchief/**/*.md");
+  });
+  
+  eleventyConfig.addCollection("leadership", function(collection) {
+    return collection.getFilteredByGlob("src/leadership/**/*.md");
+  });
+  
+  eleventyConfig.addCollection("innovation", function(collection) {
+    return collection.getFilteredByGlob("src/innovation/**/*.md");
+  });
+  
   // Add tag collection
   eleventyConfig.addCollection("tagList", function(collection) {
     const tagSet = new Set();

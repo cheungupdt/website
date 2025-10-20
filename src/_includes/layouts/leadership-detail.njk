@@ -1,0 +1,123 @@
+---
+
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<main class="expertise-detail leadership-detail">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="/">Home</a>
+      <span class="separator">/</span>
+      <a href="/leadership/">Leadership</a>
+      <span class="separator">/</span>
+      <span class="current">{{ title }}</span>
+    </nav>
+    
+    <article class="expertise-article">
+      <header class="article-header">
+        <h1 class="article-title">{{ title }}</h1>
+        <div class="article-meta">
+          <span class="category">Leadership Experience</span>
+          <span class="reading-time">6 min read</span>
+        </div>
+      </header>
+      
+      <div class="article-content">
+        {{ content | safe }}
+      </div>
+      
+      <footer class="article-footer">
+        <div class="related-topics">
+          <h3>Related Leadership Topics</h3>
+          <div class="topic-grid">
+            {% set related = collections.leadership | where("data.tags", tags[0]) | limit(3) %}
+            {% for item in related %}
+              {% if item.url != page.url %}
+              <a href="{{ item.url }}" class="topic-card">
+                <h4>{{ item.data.title }}</h4>
+                <p>{{ item.data.description | truncate(100) }}</p>
+              </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        
+        <div class="navigation-links">
+          {% set prev = collections.leadership | getPreviousCollectionItem %}
+          {% set next = collections.leadership | getNextCollectionItem %}
+          
+          {% if prev %}
+          <a href="{{ prev.url }}" class="nav-link prev">
+            <span class="nav-label">Previous</span>
+            <span class="nav-title">{{ prev.data.title }}</span>
+          </a>
+          {% endif %}
+          
+          {% if next %}
+          <a href="{{ next.url }}" class="nav-link next">
+            <span class="nav-label">Next</span>
+            <span class="nav-title">{{ next.data.title }}</span>
+          </a>
+          {% endif %}
+        </div>
+      </footer>
+    </article>
+    
+    <aside class="expertise-sidebar">
+      <div class="sidebar-section">
+        <h3>Leadership Areas</h3>
+        <nav class="sidebar-nav">
+          {% for item in collections.leadership %}
+            {% if item.data.title != "Leadership Experience" %}
+            <a href="{{ item.url }}" class="nav-item {% if item.url == page.url %}active{% endif %}">
+              {{ item.data.title }}
+            </a>
+            {% endif %}
+          {% endfor %}
+        </nav>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3>Leadership Metrics</h3>
+        <div class="metrics-list">
+          <div class="metric-item">
+            <span class="metric-value">15+</span>
+            <span class="metric-label">Teams Led</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">200+</span>
+            <span class="metric-label">Team Members</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">50+</span>
+            <span class="metric-label">Projects Delivered</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-value">25+</span>
+            <span class="metric-label">Mentees Promoted</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sidebar-section">
+        <h3>Leadership Philosophy</h3>
+        <div class="philosophy-list">
+          <div class="philosophy-item">
+            <strong>Empowerment</strong>
+            <p>Trusting teams with autonomy</p>
+          </div>
+          <div class="philosophy-item">
+            <strong>Transparency</strong>
+            <p>Open communication</p>
+          </div>
+          <div class="philosophy-item">
+            <strong>Innovation</strong>
+            <p>Encouraging creativity</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+{% endblock %}

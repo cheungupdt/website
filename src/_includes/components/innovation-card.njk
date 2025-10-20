@@ -1,0 +1,13 @@
+<div class="innovation-card expertise-card">
+  <div class="card-image">
+    <img src="{{ image }}" alt="{{ title }}" loading="lazy">
+  </div>
+  <div class="card-content">
+    <h3 class="card-title">{{ title }}</h3>
+    <p class="card-description">{{ description }}</p>
+    <div class="card-badge">
+      <span class="badge {{ impact | lower }}">{{ impact }}</span>
+    </div>
+    <a href="{{ url }}" class="card-link">Innovate →</a>
+  </div>
+</div>

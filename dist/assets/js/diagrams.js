@@ -6,12 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
       startOnLoad: false, // We'll manually initialize to avoid conflicts
       theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
       themeVariables: {
-        primaryColor: '#3366ff',
-        primaryTextColor: '#333',
-        primaryBorderColor: '#3366ff',
-        lineColor: '#666',
-        secondaryColor: '#f0f0f0',
-        tertiaryColor: '#f8f8f8'
+        primaryColor: '#3498db', // Updated to match your color scheme
+        primaryTextColor: '#2c3e50', // Updated to match your color scheme
+        primaryBorderColor: '#3498db', // Updated to match your color scheme
+        lineColor: '#95a5a6', // Updated to match your color scheme
+        secondaryColor: '#ecf0f1', // Updated to match your color scheme
+        tertiaryColor: '#f8f9f8' // Updated to match your color scheme
       },
       flowchart: {
         useMaxWidth: true,
@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize Chart.js defaults
   if (typeof Chart !== 'undefined') {
     Chart.defaults.font.family = "'Inter', sans-serif";
-    Chart.defaults.color = '#333';
-    Chart.defaults.borderColor = '#ddd';
+    Chart.defaults.color = '#2c3e50'; // Updated to match your color scheme
+    Chart.defaults.borderColor = '#95a5a6'; // Updated to match your color scheme
     
     // Set responsive defaults
     Chart.defaults.responsive = true;

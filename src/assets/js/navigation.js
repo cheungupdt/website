@@ -13,3 +13,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// Add this to your existing navigation.js file
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle mobile navigation toggle
+  const navMoreBtn = document.querySelector('.nav-more-btn');
+  
+  if (navMoreBtn) {
+    navMoreBtn.addEventListener('click', function() {
+      const dropdown = this.nextElementSibling;
+      if (dropdown && dropdown.classList.contains('nav-dropdown')) {
+        dropdown.classList.toggle('show');
+      }
+    });
+  }
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!event.target.closest('.nav-more')) {
+      const dropdown = document.querySelector('.nav-dropdown');
+      if (dropdown) {
+        dropdown.classList.remove('show');
+      }
+    }
+  });
+});

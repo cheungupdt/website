@@ -1,180 +1,255 @@
+// src/assets/js/showcase.js
+console.log('showcase.js loaded');
+
 document.addEventListener('DOMContentLoaded', function() {
-  // Initialize 3D models
-  init3DModels();
+  console.log('DOM loaded, initializing showcase...');
+  
+  // Initialize 3D models (canvas-based)
+  try {
+    init3DModels();
+    console.log('3D models initialized');
+  } catch (error) {
+    console.error('Error initializing 3D models:', error);
+  }
   
   // Initialize animation demos
-  initAnimationDemos();
+  try {
+    initAnimationDemos();
+    console.log('Animation demos initialized');
+  } catch (error) {
+    console.error('Error initializing animation demos:', error);
+  }
   
   // Initialize parallax effects
-  initParallaxEffects();
+  try {
+    initParallaxEffects();
+    console.log('Parallax effects initialized');
+  } catch (error) {
+    console.error('Error initializing parallax effects:', error);
+  }
   
   // Initialize performance demo
-  initPerformanceDemo();
+  try {
+    initPerformanceDemo();
+    console.log('Performance demo initialized');
+  } catch (error) {
+    console.error('Error initializing performance demo:', error);
+  }
+  
+  // Initialize chatbot demo
+  try {
+    initChatbotDemo();
+    console.log('Chatbot demo initialized');
+  } catch (error) {
+    console.error('Error initializing chatbot demo:', error);
+  }
 });
 
+// 3D Models Initialization (Canvas-based)
 function init3DModels() {
-  // This is a placeholder for 3D model initialization
-  // In a real implementation, you would use a library like Three.js or Babylon.js
+  console.log('Initializing 3D models...');
   
   const modelContainers = document.querySelectorAll('.model-container');
+  console.log(`Found ${modelContainers.length} model containers`);
   
-  modelContainers.forEach(container => {
+  modelContainers.forEach((container, index) => {
     const canvas = container.querySelector('canvas');
     const loading = container.querySelector('.model-loading');
     const rotateBtn = container.querySelector('[id^="rotate-"]');
     const resetBtn = container.querySelector('[id^="reset-"]');
     
+    console.log(`Setting up model ${index + 1}`);
+    
     if (canvas && loading) {
-      // Simulate model loading
-      setTimeout(() => {
-        loading.style.display = 'none';
-        
-        // Draw a placeholder representation of the 3D model
-        const ctx = canvas.getContext('2d');
+      // Set up canvas
+      const ctx = canvas.getContext('2d');
+      
+      // Animation variables
+      let isRotating = false;
+      let rotation = 0;
+      let isDragging = false;
+      let startX = 0;
+      
+      // Set canvas size
+      function resizeCanvas() {
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
+        drawRoboticArm(ctx, canvas.width, canvas.height, rotation);
+      }
+      
+      // Draw robotic arm function
+      function drawRoboticArm(ctx, width, height, rotation = 0) {
+        ctx.clearRect(0, 0, width, height);
         
-        // Draw a simple representation of a robotic arm
-        drawRoboticArm(ctx, canvas.width, canvas.height);
+        // Set up the drawing context
+        ctx.save();
+        ctx.translate(width / 2, height / 2);
+        ctx.rotate(rotation);
         
-        // Add rotation functionality
-        let isRotating = false;
-        let rotation = 0;
+        // Draw base
+        ctx.fillStyle = '#4a5568';
+        ctx.fillRect(-40, 20, 80, 20);
         
-        if (rotateBtn) {
-          rotateBtn.addEventListener('click', function() {
-            isRotating = !isRotating;
-            this.textContent = isRotating ? 'Stop Rotation' : 'Toggle Rotation';
-            
-            if (isRotating) {
-              animateRotation();
-            }
-          });
-        }
+        // Draw first segment
+        ctx.fillStyle = '#2d3748';
+        ctx.fillRect(-15, -60, 30, 80);
         
-        if (resetBtn) {
-          resetBtn.addEventListener('click', function() {
-            rotation = 0;
-            isRotating = false;
-            rotateBtn.textContent = 'Toggle Rotation';
-            drawRoboticArm(ctx, canvas.width, canvas.height);
-          });
-        }
+        // Draw joint
+        ctx.beginPath();
+        ctx.arc(0, -60, 15, 0, Math.PI * 2);
+        ctx.fillStyle = '#718096';
+        ctx.fill();
         
-        function animateRotation() {
-          if (!isRotating) return;
-          
+        // Draw second segment
+        ctx.save();
+        ctx.translate(0, -60);
+        ctx.rotate(rotation * 2);
+        ctx.fillStyle = '#2d3748';
+        ctx.fillRect(-10, -50, 20, 50);
+        
+        // Draw joint
+        ctx.beginPath();
+        ctx.arc(0, -50, 10, 0, Math.PI * 2);
+        ctx.fillStyle = '#718096';
+        ctx.fill();
+        
+        // Draw third segment
+        ctx.save();
+        ctx.translate(0, -50);
+        ctx.rotate(rotation * 3);
+        ctx.fillStyle = '#2d3748';
+        ctx.fillRect(-8, -40, 16, 40);
+        
+        // Draw end effector
+        ctx.beginPath();
+        ctx.arc(0, -40, 8, 0, Math.PI * 2);
+        ctx.fillStyle = '#e53e3e';
+        ctx.fill();
+        
+        ctx.restore();
+        ctx.restore();
+        ctx.restore();
+      }
+      
+      // Animation loop
+      function animate() {
+        if (isRotating) {
           rotation += 0.01;
           drawRoboticArm(ctx, canvas.width, canvas.height, rotation);
-          requestAnimationFrame(animateRotation);
+          requestAnimationFrame(animate);
         }
+      }
+      
+      // Mouse controls
+      canvas.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        startX = e.clientX;
+        isRotating = false;
+        if (rotateBtn) rotateBtn.textContent = 'Toggle Rotation';
+      });
+      
+      canvas.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
         
-        // Add mouse interaction for manual rotation
-        let isDragging = false;
-        let startX = 0;
+        const deltaX = e.clientX - startX;
+        rotation += deltaX * 0.01;
+        startX = e.clientX;
         
-        canvas.addEventListener('mousedown', function(e) {
-          isDragging = true;
-          startX = e.clientX;
-          isRotating = false;
-          rotateBtn.textContent = 'Toggle Rotation';
+        drawRoboticArm(ctx, canvas.width, canvas.height, rotation);
+      });
+      
+      canvas.addEventListener('mouseup', function() {
+        isDragging = false;
+      });
+      
+      // Touch controls for mobile
+      canvas.addEventListener('touchstart', function(e) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        isRotating = false;
+        if (rotateBtn) rotateBtn.textContent = 'Toggle Rotation';
+      });
+      
+      canvas.addEventListener('touchmove', function(e) {
+        if (!isDragging) return;
+        
+        const deltaX = e.touches[0].clientX - startX;
+        rotation += deltaX * 0.01;
+        startX = e.touches[0].clientX;
+        
+        drawRoboticArm(ctx, canvas.width, canvas.height, rotation);
+      });
+      
+      canvas.addEventListener('touchend', function() {
+        isDragging = false;
+      });
+      
+      // Button controls
+      if (rotateBtn) {
+        rotateBtn.addEventListener('click', function() {
+          isRotating = !isRotating;
+          this.textContent = isRotating ? 'Stop Rotation' : 'Toggle Rotation';
+          
+          if (isRotating) {
+            animate();
+          }
         });
-        
-        document.addEventListener('mousemove', function(e) {
-          if (!isDragging) return;
-          
-          const deltaX = e.clientX - startX;
-          rotation += deltaX * 0.01;
-          startX = e.clientX;
-          
+      }
+      
+      if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+          rotation = 0;
+          isRotating = false;
+          if (rotateBtn) rotateBtn.textContent = 'Toggle Rotation';
           drawRoboticArm(ctx, canvas.width, canvas.height, rotation);
         });
-        
-        document.addEventListener('mouseup', function() {
-          isDragging = false;
-        });
-      }, 1500);
+      }
+      
+      // Handle resize
+      window.addEventListener('resize', resizeCanvas);
+      
+      // Initialize canvas and hide loading
+      resizeCanvas();
+      
+      setTimeout(() => {
+        if (loading) loading.style.display = 'none';
+      }, 1000);
     }
   });
 }
 
-function drawRoboticArm(ctx, width, height, rotation = 0) {
-  ctx.clearRect(0, 0, width, height);
-  
-  // Set up the drawing context
-  ctx.save();
-  ctx.translate(width / 2, height / 2);
-  ctx.rotate(rotation);
-  
-  // Draw base
-  ctx.fillStyle = '#4a5568';
-  ctx.fillRect(-40, 20, 80, 20);
-  
-  // Draw first segment
-  ctx.fillStyle = '#2d3748';
-  ctx.fillRect(-15, -60, 30, 80);
-  
-  // Draw joint
-  ctx.beginPath();
-  ctx.arc(0, -60, 15, 0, Math.PI * 2);
-  ctx.fillStyle = '#718096';
-  ctx.fill();
-  
-  // Draw second segment
-  ctx.save();
-  ctx.translate(0, -60);
-  ctx.rotate(rotation * 2);
-  ctx.fillStyle = '#2d3748';
-  ctx.fillRect(-10, -50, 20, 50);
-  
-  // Draw joint
-  ctx.beginPath();
-  ctx.arc(0, -50, 10, 0, Math.PI * 2);
-  ctx.fillStyle = '#718096';
-  ctx.fill();
-  
-  // Draw third segment
-  ctx.save();
-  ctx.translate(0, -50);
-  ctx.rotate(rotation * 3);
-  ctx.fillStyle = '#2d3748';
-  ctx.fillRect(-8, -40, 16, 40);
-  
-  // Draw end effector
-  ctx.beginPath();
-  ctx.arc(0, -40, 8, 0, Math.PI * 2);
-  ctx.fillStyle = '#e53e3e';
-  ctx.fill();
-  
-  ctx.restore();
-  ctx.restore();
-  ctx.restore();
-}
-
+// Animation Demos
 function initAnimationDemos() {
-  // Initialize animation demo buttons
+  console.log('Initializing animation demos...');
+  
   const animationButtons = document.querySelectorAll('.demo-controls button');
+  console.log(`Found ${animationButtons.length} animation buttons`);
   
   animationButtons.forEach(button => {
     button.addEventListener('click', function() {
       const animation = this.getAttribute('data-animation');
       const demoBox = this.closest('.demo-element').querySelector('.demo-box');
       
-      // Remove any existing animation classes
-      demoBox.className = 'demo-box';
-      
-      // Force reflow to restart animation
-      void demoBox.offsetWidth;
-      
-      // Add the new animation class
-      demoBox.classList.add(animation);
+      if (demoBox) {
+        // Remove any existing animation classes
+        demoBox.className = 'demo-box';
+        
+        // Force reflow to restart animation
+        void demoBox.offsetWidth;
+        
+        // Add the new animation class
+        demoBox.classList.add(animation);
+      }
     });
   });
 }
 
+// Parallax Effects
 function initParallaxEffects() {
-  // Initialize parallax layers in showcase cards
+  console.log('Initializing parallax effects...');
+  
   const parallaxDemos = document.querySelectorAll('.parallax-demo');
+  console.log(`Found ${parallaxDemos.length} parallax demos`);
   
   parallaxDemos.forEach(demo => {
     const layers = demo.querySelectorAll('.parallax-layer');
@@ -205,80 +280,18 @@ function initParallaxEffects() {
       });
     });
   });
-  
-  // Scroll-based parallax for full-page sections
-  const parallaxSections = document.querySelectorAll('.parallax-section');
-  
-  if (parallaxSections.length > 0) {
-    window.addEventListener('scroll', function() {
-      const scrollY = window.pageYOffset;
-      
-      parallaxSections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const speed = section.getAttribute('data-speed') || 0.5;
-        
-        // Only apply parallax when section is in view
-        if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
-          const yPos = -(scrollY * speed);
-          const parallaxBg = section.querySelector('.parallax-bg');
-          
-          if (parallaxBg) {
-            parallaxBg.style.transform = `translateY(${yPos}px)`;
-          }
-        }
-      });
-    });
-  }
-  
-  // Parallax for showcase cards on scroll
-  const showcaseCards = document.querySelectorAll('.showcase-card');
-  
-  window.addEventListener('scroll', function() {
-    const scrollY = window.pageYOffset;
-    
-    showcaseCards.forEach((card, index) => {
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.top + rect.height / 2;
-      const windowCenter = window.innerHeight / 2;
-      const distance = cardCenter - windowCenter;
-      
-      // Apply subtle parallax effect based on distance from center
-      const maxDistance = window.innerHeight;
-      const normalizedDistance = Math.max(-1, Math.min(1, distance / maxDistance));
-      const parallaxOffset = normalizedDistance * 20;
-      
-      // Apply different speeds for different cards
-      const speed = 0.5 + (index * 0.1);
-      const yPos = parallaxOffset * speed;
-      
-      card.style.transform = `translateY(${yPos}px)`;
-    });
-  });
-  
-  // Parallax for page header
-  const pageHeader = document.querySelector('.page-header');
-  
-  if (pageHeader) {
-    window.addEventListener('scroll', function() {
-      const scrollY = window.pageYOffset;
-      const headerRect = pageHeader.getBoundingClientRect();
-      
-      // Only apply when header is still visible
-      if (headerRect.bottom > 0) {
-        const yPos = scrollY * 0.5;
-        pageHeader.style.transform = `translateY(${yPos}px)`;
-        pageHeader.style.opacity = 1 - (scrollY / 500);
-      }
-    });
-  }
 }
 
+// Performance Demo
 function initPerformanceDemo() {
+  console.log('Initializing performance demo...');
+  
   const runTestBtn = document.getElementById('run-performance-test');
   
   if (runTestBtn) {
     runTestBtn.addEventListener('click', function() {
-      // Simulate running a performance test
+      console.log('Running performance test...');
+      
       this.textContent = 'Running...';
       this.disabled = true;
       
@@ -338,22 +351,32 @@ function initPerformanceDemo() {
   }
 }
 
-// Add smooth scroll behavior for parallax sections
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+// Chatbot Demo
+function initChatbotDemo() {
+  console.log('Initializing chatbot demo...');
+  
+  const tryChatbotBtn = document.getElementById('try-chatbot-btn');
+  
+  if (tryChatbotBtn) {
+    tryChatbotBtn.addEventListener('click', () => {
+      console.log('Opening chatbot...');
       
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+      // Open the actual chatbot
+      const chatbotContainer = document.getElementById('chatbot-container');
+      const chatbotWindow = document.getElementById('chatbot-window');
+      
+      if (chatbotContainer && chatbotWindow) {
+        chatbotContainer.classList.add('open');
+        chatbotWindow.classList.add('open');
+        
+        // Focus the input
+        setTimeout(() => {
+          const chatbotInput = document.getElementById('chatbot-input');
+          if (chatbotInput) {
+            chatbotInput.focus();
+          }
+        }, 300);
       }
     });
-  });
+  }
 }
-
-// Initialize smooth scroll on page load
-initSmoothScroll();

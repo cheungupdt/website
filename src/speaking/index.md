@@ -1,6 +1,6 @@
 ---
 title: Speaking Engagements
-layout: ../_includes/layouts/project.njk
+layout: ../_includes/layouts/base.njk
 description: Conference presentations and speaking engagements
 ---
 

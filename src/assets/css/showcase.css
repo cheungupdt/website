@@ -1,3 +1,7 @@
+/* ===================================
+   SHOWCASE PAGE STYLES
+   =================================== */
+
 .showcase-page {
   padding: 2rem 0;
 }
@@ -12,6 +16,10 @@
   gap: 2rem;
   margin-top: 2rem;
 }
+
+/* ===================================
+   SHOWCASE CARD STYLES
+   =================================== */
 
 .showcase-card {
   background-color: var(--color-light);
@@ -28,7 +36,7 @@
 
 .card-media {
   position: relative;
-  height: 200px;
+  height: 250px;
   background-color: var(--color-gray-light);
   overflow: hidden;
 }
@@ -60,6 +68,10 @@
   border-radius: 4px;
   font-size: 0.875rem;
 }
+
+/* ===================================
+   3D MODEL STYLES
+   =================================== */
 
 .model-container {
   width: 100%;
@@ -118,15 +130,26 @@
   position: absolute;
   bottom: 10px;
   left: 10px;
+  right: 10px;
   display: flex;
   gap: 0.5rem;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
 }
+
+/* ===================================
+   PARALLAX DEMO STYLES
+   =================================== */
 
 .parallax-demo {
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
+  cursor: move;
 }
 
 .parallax-layers {
@@ -146,22 +169,28 @@
   justify-content: center;
   font-weight: bold;
   color: white;
+  border-radius: 8px;
+  will-change: transform;
 }
 
 .parallax-layer:nth-child(1) {
-  background-color: rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, rgba(66, 153, 225, 0.3), rgba(49, 130, 206, 0.3));
   z-index: 1;
 }
 
 .parallax-layer:nth-child(2) {
-  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, rgba(72, 187, 120, 0.3), rgba(56, 161, 105, 0.3));
   z-index: 2;
 }
 
 .parallax-layer:nth-child(3) {
-  background-color: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(135deg, rgba(237, 137, 54, 0.3), rgba(221, 107, 32, 0.3));
   z-index: 3;
 }
+
+/* ===================================
+   ANIMATION DEMO STYLES
+   =================================== */
 
 .animation-demo {
   width: 100%;
@@ -265,17 +294,24 @@
   justify-content: center;
 }
 
+/* ===================================
+   PERFORMANCE DEMO STYLES
+   =================================== */
+
 .performance-demo {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 .performance-metrics {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -295,6 +331,417 @@
   color: var(--color-primary);
 }
 
+.metric-action {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* ===================================
+   VOICE SYNTHESIS STYLES (Fixed Layout)
+   =================================== */
+
+.voice-synthesis-demo {
+  width: 100%;
+  height: 100%;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Header with Speak button and status */
+.voice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.voice-header .btn {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.voice-status {
+  font-size: 0.75rem;
+  color: var(--color-gray-dark);
+  text-align: right;
+}
+
+/* Main content area */
+.voice-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+/* Text input section */
+.voice-text-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.voice-text-section label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+#voice-text {
+  width: 100%;
+  padding: 0.375rem;
+  border: 1px solid var(--color-gray);
+  border-radius: 4px;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 0.75rem;
+  min-height: 50px;
+}
+
+/* Controls section */
+.voice-controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.voice-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.option-group label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.option-group select {
+  padding: 0.25rem;
+  border: 1px solid var(--color-gray);
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.slider-container input[type="range"] {
+  flex: 1;
+}
+
+.slider-container span {
+  font-size: 0.625rem;
+  color: var(--color-gray-dark);
+  min-width: 20px;
+  text-align: right;
+}
+
+/* Action buttons */
+.voice-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.375rem;
+}
+
+.voice-actions .btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.625rem;
+  min-width: auto;
+}
+
+/* Visualization */
+.voice-visualization {
+  height: 80px;
+  background-color: var(--color-light);
+  border-radius: 6px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#voice-visualizer {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* Status indicators */
+.status-indicator.ready {
+  color: var(--color-success);
+}
+
+.status-indicator.speaking {
+  color: var(--color-primary);
+}
+
+.status-indicator.paused {
+  color: var(--color-warning);
+}
+
+.status-indicator.error {
+  color: var(--color-error);
+}
+
+/* Progress bar */
+.progress-bar {
+  width: 100%;
+  height: 3px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  margin-top: 0.25rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  width: 0%;
+  transition: width 0.1s ease;
+}
+
+/* Make voice synthesis card taller */
+.showcase-card[data-type="voice-synthesis"] .card-media {
+  height: 320px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .voice-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+  
+  .voice-header .btn {
+    width: 100%;
+  }
+  
+  .voice-status {
+    text-align: center;
+  }
+  
+  .sliders {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  
+  .voice-actions {
+    flex-wrap: wrap;
+  }
+  
+  .voice-actions .btn {
+    flex: 1;
+  }
+}
+
+/* ===================================
+   CHATBOT DEMO STYLES
+   =================================== */
+
+.chatbot-demo {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demo-chatbot {
+  width: 100%;
+  max-width: 300px;
+  height: 350px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.demo-chatbot-header {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--color-gray-light);
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.demo-chatbot-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.demo-chatbot-avatar {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demo-chatbot-details h3 {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.demo-status {
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.demo-status.online::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background-color: #4ade80;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.demo-messages {
+  flex: 1;
+  padding: 0.75rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.demo-message {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 85%;
+}
+
+.demo-message.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.demo-message.bot {
+  align-self: flex-start;
+}
+
+.demo-message-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+}
+
+.demo-message.user .demo-message-avatar {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.demo-message.bot .demo-message-avatar {
+  background-color: var(--color-gray-light);
+  color: var(--color-gray-dark);
+}
+
+.demo-message-content {
+  background-color: var(--color-gray-light);
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.demo-message.user .demo-message-content {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.demo-chatbot-input {
+  padding: 0.5rem 0.75rem;
+  border-top: 1px solid var(--color-gray-light);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.demo-chatbot-input input {
+  flex: 1;
+  padding: 0.375rem 0.5rem;
+  border: 1px solid var(--color-gray);
+  border-radius: 16px;
+  font-size: 0.75rem;
+}
+
+.demo-send-button {
+  width: 28px;
+  height: 28px;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.demo-chatbot-footer {
+  padding: 0.5rem 0.75rem;
+  background-color: var(--color-gray-light);
+  text-align: center;
+}
+
+.demo-try-chatbot {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.375rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.demo-try-chatbot:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* ===================================
+   BUTTON STYLES
+   =================================== */
+
 .btn {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -313,128 +760,86 @@
 }
 
 .btn-small {
-  padding: 0.25rem 0.5rem;
+  padding: 0.375rem 0.75rem;
   font-size: 0.75rem;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
 }
+
+.btn-primary {
+  background-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--color-gray);
+  color: var(--color-gray-dark);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-gray-dark);
+}
+
+.btn:disabled {
+  background-color: var(--color-gray);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ===================================
+   SPECIFIC CARD HEIGHTS
+   =================================== */
+
+/* Different heights for different card types */
+.showcase-card[data-type="voice-synthesis"] .card-media {
+  height: 350px;
+}
+
+.showcase-card[data-type="chatbot"] .card-media {
+  height: 300px;
+}
+
+.showcase-card[data-type="performance"] .card-media {
+  height: 280px;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
 
 @media (max-width: 768px) {
   .showcase-grid {
     grid-template-columns: 1fr;
   }
-}
-
-/* Parallax section styles */
-.parallax-section {
-  position: relative;
-  overflow: hidden;
-  min-height: 400px;
-}
-
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  background-size: cover;
-  background-position: center;
-  will-change: transform;
-}
-
-/* Enhanced parallax demo styles */
-.parallax-demo {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  cursor: move;
-}
-
-.parallax-layers {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.parallax-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: white;
-  border-radius: 8px;
-  will-change: transform;
-}
-
-.parallax-layer:nth-child(1) {
-  background: linear-gradient(135deg, rgba(66, 153, 225, 0.3), rgba(49, 130, 206, 0.3));
-  z-index: 1;
-}
-
-.parallax-layer:nth-child(2) {
-  background: linear-gradient(135deg, rgba(72, 187, 120, 0.3), rgba(56, 161, 105, 0.3));
-  z-index: 2;
-}
-
-.parallax-layer:nth-child(3) {
-  background: linear-gradient(135deg, rgba(237, 137, 54, 0.3), rgba(221, 107, 32, 0.3));
-  z-index: 3;
-}
-
-/* Progress bar for performance demo */
-.progress-bar {
-  width: 100%;
-  height: 4px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-  margin: 1rem 0;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background-color: var(--color-primary);
-  width: 0%;
-  transition: width 0.1s ease;
-}
-
-/* Enhanced showcase card animations */
-.showcase-card {
-  will-change: transform;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Page header parallax */
-.page-header {
-  will-change: transform, opacity;
-  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Performance improvements */
-.parallax-layer,
-.model-viewer canvas,
-.showcase-card {
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-/* Responsive parallax adjustments */
-@media (max-width: 768px) {
+  
+  .voice-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
   .parallax-layer {
     font-size: 0.875rem;
   }
   
   .parallax-demo {
     cursor: default;
+  }
+}
+
+@media (max-width: 480px) {
+  .demo-chatbot {
+    max-width: 250px;
+    height: 300px;
   }
 }

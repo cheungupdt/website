@@ -2,7 +2,7 @@
   "title": "KCS Team",
   "description": "Professional multi-subdomain for KCS Team",
   "author": "KCS Team", 
-  "url": "http://localhost:8000",
+  "url": "http://localhost:8080",
   "email": "contact@kcsteam.org",
   "diagrams": {
     "theme": "dark",
@@ -28,28 +28,16 @@
       "url": "/achievements/"
     },
     {
+      "name": "Leadership",
+      "url": "/leadership/"
+    },
+    {
       "name": "Speaking",
       "url": "/speaking/"
     },
     {
       "name": "Diagrams",
       "url": "/diagrams/"
-    },
-    {
-      "name": "Robotics",
-      "url": "/robotics/"
-    },
-    {
-      "name": "n8n Expertise",
-      "url": "/n8nchief/"
-    },
-    {
-      "name": "Leadership",
-      "url": "/leadership/"
-    },
-    {
-      "name": "Innovation",
-      "url": "/innovation/"
     },
     {
       "name": "Showcase",

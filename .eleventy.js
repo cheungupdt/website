@@ -7,6 +7,9 @@ module.exports = function(eleventyConfig) {
   // Add passthrough copy for assets
   eleventyConfig.addPassthroughCopy("src/assets");
   
+  // Add passthrough copy for service worker
+  eleventyConfig.addPassthroughCopy("src/sw.js");
+  
   // Add collections for blog posts
   eleventyConfig.addCollection("posts", function(collection) {
     return collection.getFilteredByGlob("src/_subsites/blog/posts/**/*.md");
@@ -53,8 +56,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("showcase", function(collection) {
     return collection.getFilteredByGlob("src/showcase/**/*.md");
   });
-
-
   
   // Add tag collection
   eleventyConfig.addCollection("tagList", function(collection) {

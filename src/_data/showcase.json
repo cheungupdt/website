@@ -1,4 +1,3 @@
-
 {
   "title": "Technical Showcase",
   "description": "Explore interactive technical demonstrations and visualizations",
@@ -11,10 +10,21 @@
       "tags": ["3d", "robotics", "interactive"]
     },
     {
+      "title": "Voice Synthesis Demo",
+      "description": "Text-to-speech synthesis with natural language processing",
+      "type": "voice-synthesis",
+      "tags": ["voice", "ai", "synthesis"]
+    },
+    {
+      "title": "AI Assistant Chatbot",
+      "description": "Intelligent chatbot powered by n8n workflows",
+      "type": "chatbot",
+      "tags": ["ai", "chatbot", "automation"]
+    },
+    {
       "title": "Parallax Scrolling Effects",
       "description": "Smooth parallax scrolling with layered elements",
       "type": "parallax",
-      "image": "parallax-demo.jpg",
       "tags": ["animation", "scrolling", "visual"]
     },
     {
